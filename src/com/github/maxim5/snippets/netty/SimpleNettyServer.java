@@ -1,13 +1,16 @@
 package com.github.maxim5.snippets.netty;
 
+import com.google.common.flogger.FluentLogger;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import java.util.logging.Level;
 
 public class SimpleNettyServer {
+    private static final FluentLogger log = FluentLogger.forEnclosingClass();
     private static final int HTTP_PORT = 8080;
 
     public void run() throws Exception {
@@ -27,8 +30,8 @@ public class SimpleNettyServer {
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             // Bind and start to accept incoming connections.
-            System.out.println("Binding to " + HTTP_PORT);
             ChannelFuture httpChannel = httpBootstrap.bind(HTTP_PORT).sync();
+            log.at(Level.INFO).log("Binding to %d", HTTP_PORT);
 
             // Wait until server socket is closed
             httpChannel.channel().closeFuture().sync();
@@ -40,6 +43,18 @@ public class SimpleNettyServer {
     }
 
     public static void main(String[] args) throws Exception {
+        logSystemProperties();
         new SimpleNettyServer().run();
+    }
+
+    private static void logSystemProperties() {
+        System.out.println("Properties:");
+        logProp("task");
+        logProp("java.util.logging.config.file");
+//        System.out.println(System.getProperties());
+    }
+
+    private static void logProp(String name) {
+        System.out.println("  " + name + ": " + System.getProperty(name));
     }
 }
