@@ -31,7 +31,7 @@ public class SimpleNettyServer {
 
             // Bind and start to accept incoming connections.
             ChannelFuture httpChannel = httpBootstrap.bind(HTTP_PORT).sync();
-            log.at(Level.INFO).log("Binding to %d", HTTP_PORT);
+            log.at(Level.INFO).log("Server running at %d", HTTP_PORT);
 
             // Wait until server socket is closed
             httpChannel.channel().closeFuture().sync();
@@ -51,7 +51,7 @@ public class SimpleNettyServer {
         System.out.println("Properties:");
         logProp("task");
         logProp("java.util.logging.config.file");
-//        System.out.println(System.getProperties());
+        // System.out.println(System.getProperties());
     }
 
     private static void logProp(String name) {
