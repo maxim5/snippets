@@ -1,0 +1,32 @@
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'idea'
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.netty:netty-all:4.1.65.Final'
+    implementation 'org.jetbrains:annotations:20.1.0'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+    }
+}
+
+application {
+    mainClassName = 'com.github.maxim5.snippets.netty.SimpleNettyServer'
+}
