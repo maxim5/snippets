@@ -2,7 +2,8 @@ Java
 ----
 
 - webserver: netty
-- java features: records
++ java features:
+  + records
 - DB/ORM
 - templates
 - UI
