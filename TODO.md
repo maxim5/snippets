@@ -1,17 +1,56 @@
 Java
 ----
 
-+ webserver:
-  + simple server netty
-+ java features:
++ Webserver:
+  + Netty: simple server
+  - https://github.com/playframework/playframework
+    - with netty
++ Java features:
   + records
-+ logging
++ Logging
+  + Flogger
+- Flags
+- IoC
+  - Guice
+- RPC
+  - gRPC
 - DB/ORM
-- templates
+- Templates
+  - https://github.com/jknack/handlebars.java
+  - Twirl
 - UI
-+ Gradle
++ Building
+  + Gradle
+  - Blaze
+- Testing
+  - Truth
 
 Android
 -------
 
-- web app
+- HTML app
+
+Awesome Java Libs
+-----------------
+
+- Guava
+- Jackson
+- https://github.com/ben-manes/caffeine
+- https://github.com/square/okhttp
+- https://github.com/real-logic/Aeron
+- Redis
+
+More:
+- https://github.com/pditommaso/awesome-java
+- https://github.com/akullpp/awesome-java
+
+JavaScript
+----------
+
+- Static typing
+  - https://github.com/facebook/flow
+
+Awesome JavaScript Libs
+-----------------------
+
+- https://github.com/sorrycc/awesome-javascript
