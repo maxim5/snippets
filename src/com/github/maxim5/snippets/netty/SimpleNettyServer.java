@@ -7,11 +7,11 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+
 import java.util.logging.Level;
 
 public class SimpleNettyServer {
     private static final FluentLogger log = FluentLogger.forEnclosingClass();
-    private static final int HTTP_PORT = 8080;
 
     public void run() throws Exception {
         // Create the multithreaded event loops for the server
@@ -30,8 +30,8 @@ public class SimpleNettyServer {
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             // Bind and start to accept incoming connections.
-            ChannelFuture httpChannel = httpBootstrap.bind(HTTP_PORT).sync();
-            log.at(Level.INFO).log("Server running at %d", HTTP_PORT);
+            ChannelFuture httpChannel = httpBootstrap.bind(Flags.FLAGS.port()).sync();
+            log.at(Level.INFO).log("Server running at %d", Flags.FLAGS.port());
 
             // Wait until server socket is closed
             httpChannel.channel().closeFuture().sync();
@@ -43,6 +43,7 @@ public class SimpleNettyServer {
     }
 
     public static void main(String[] args) throws Exception {
+        Flags.FLAGS.parseCommandLine(args);
         logSystemProperties();
         new SimpleNettyServer().run();
     }

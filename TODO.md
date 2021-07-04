@@ -9,7 +9,8 @@ Java
   + records
 + Logging
   + Flogger
-- Flags
++ Flags
+  + https://github.com/remkop/picocli
 - IoC
   - Guice
 - RPC
