@@ -5,6 +5,7 @@ Java
   + Netty: simple server
   - https://github.com/playframework/playframework
     - with netty
+  + Reactor Netty
 + Java features:
   + records
 + Logging
