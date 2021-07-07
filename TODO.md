@@ -35,7 +35,7 @@ Android
 Awesome Java Libs
 -----------------
 
-- Guava
++ Guava
 - Jackson
 - https://github.com/ben-manes/caffeine
 - https://github.com/square/okhttp
