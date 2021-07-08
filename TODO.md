@@ -36,9 +36,9 @@ Awesome Java Libs
 -----------------
 
 + Guava
-- Jackson
++ Jackson
 - https://github.com/ben-manes/caffeine
-- https://github.com/square/okhttp
++ https://github.com/square/okhttp
 - https://github.com/real-logic/Aeron
 - Redis
 

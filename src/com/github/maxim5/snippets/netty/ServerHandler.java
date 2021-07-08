@@ -22,7 +22,13 @@ public class ServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> 
         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, content.readableBytes());
         ctx.write(response);
         ctx.flush();
+        // ctx.close();
 
         log.at(Level.INFO).log("%s %s: %s", request.method(), request.uri(), response.status());
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        log.at(Level.WARNING).withCause(cause).log("Exception caught: %s", cause.getMessage());
     }
 }
