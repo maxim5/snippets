@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 // Consider also
@@ -103,13 +104,17 @@ public class Reflect {
         post.invoke(instance, 0, 0, null);
         post.invoke(instance, 10, 42L, "value");
 
-        // Thanks https://dzone.com/articles/think-twice-before-using-reflection for the idea
-        // LambdaMetafactory?
         MethodHandle handle = MethodHandles.lookup().unreflect(post);
-        handle.invoke(instance, 1, 1, "x");
+        handle.invokeExact(instance, 1, 1L, "x");
 
-        handle.bindTo(instance);
-        handle.invoke(instance, 2, 2, "y");
+        handle = handle.bindTo(instance);
+        handle.invokeExact(2, 2L, "y");
+
+        // Thanks https://dzone.com/articles/think-twice-before-using-reflection for the idea of using LambdaMetafactory
+        // https://wttech.blog/blog/2020/method-handles-and-lambda-metafactory/
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        BiConsumer<MyBean, Integer> lambda = ReflectUtils.makeBiConsumer(lookup, lookup.unreflect(get), MyBean.class, Integer.class);
+        lambda.accept(instance, 777);
     }
 
     @JavaBean
