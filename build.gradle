@@ -40,6 +40,7 @@ dependencies {
     // Key-Value stores
     implementation 'net.openhft:chronicle-map:3.21ea81'
     implementation 'org.deephacks.lmdbjni:lmdbjni:0.4.6'
+    implementation 'org.lmdbjava:lmdbjava:0.8.1'
     implementation 'org.mapdb:mapdb:3.0.8'
 
     def os
