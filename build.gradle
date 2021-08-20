@@ -9,6 +9,9 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
+        /*maven {
+            url 'https://dl.bintray.com/yahoo/maven/'
+        }*/
     }
 }
 
@@ -42,6 +45,7 @@ dependencies {
     implementation 'org.deephacks.lmdbjni:lmdbjni:0.4.6'
     implementation 'org.lmdbjava:lmdbjava:0.8.1'
     implementation 'org.mapdb:mapdb:3.0.8'
+//    implementation 'com.oath.halodb:halodb:0.5.3'   // 0.5.6
 
     def os
     if (Os.isFamily(Os.FAMILY_UNIX)) {
