@@ -12,8 +12,9 @@ public class TryLmdbJni {
         // System.out.println(System.getProperty("library.lmdbjni.path"));
 
         try (Env env = new Env()) {
-            env.open("data/lmdb-jni", Constants.NOSYNC | Constants.WRITEMAP);
             env.setMapSize(100);
+            env.setMaxDbs(32);
+            env.open("data/lmdb-jni", Constants.NOSYNC | Constants.WRITEMAP);
             try (Database db = env.openDatabase("simple")) {
                 /*
                 byte[] key = toBytes("foo");

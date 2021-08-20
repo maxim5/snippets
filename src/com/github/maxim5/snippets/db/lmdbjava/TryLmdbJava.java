@@ -73,6 +73,9 @@ public class TryLmdbJava {
 
         // We can also delete. The simplest way is to let Dbi allocate a new Txn...
         db.delete(key);
+        // try (Txn<ByteBuffer> txn = env.txnWrite()) {
+        //     db.drop(txn);
+        // }
 
         // Now if we try to fetch the deleted row, it won't be present
         try (Txn<ByteBuffer> txn = env.txnRead()) {
